@@ -27,6 +27,8 @@ Ensure Python is installed on your system. This project requires the following d
 - `face-recognition`
 - `dlib`
 
+Additionally, make sure you have **CMake** installed on your system. CMake is necessary for building some dependencies during the installation process. You can download CMake from [cmake.org/download](https://cmake.org/download/).
+
 Install the dependencies by running:
 
 ```bash
@@ -39,6 +41,55 @@ To start the backend server, execute the following command:
 ```bash
 uvicorn app:app --reload
 ```
+## API Reference
+
+### WebSocket Endpoint
+
+#### `/ws`
+
+| Parameter     | Type       | Description                           |
+| :------------ | :--------- | :------------------------------------ |
+| `image_data`  | `bytes`    | **Required**. Image data in bytes for face detection. |
+
+### Endpoints
+
+#### `GET /student_attendance`
+
+| Parameter     | Type       | Description                           |
+| :------------ | :--------- | :------------------------------------ |
+| -             | -          | No parameters required. Retrieves all student attendance records. |
+
+#### `POST /create-student`
+
+| Parameter     | Type       | Description                           |
+| :------------ | :--------- | :------------------------------------ |
+| `image_id`    | `string`   | **Required**. Unique identifier for the student image. |
+| `name`        | `string`   | **Required**. Name of the student. |
+| `department`  | `string`   | Department of the student. |
+| `year`        | `string`   | Year of study for the student. |
+| `roll_no`     | `string`   | Roll number of the student. |
+| `email`       | `string`   | Email address of the student. |
+| `phone`       | `string`   | Phone number of the student. |
+| `image_data`  | `string`   | **Required**. Base64 encoded image data of the student. |
+
+#### Example Request:
+
+```json
+// POST /create-student
+{
+  "image_id": "1001",
+  "name": "Soumyadeep Pal",
+  "department": "Computer Science",
+  "year": "5",
+  "roll_no": "70",
+  "email": "shoumodeep.pal@gmail.com",
+  "phone": "7001589718",
+  "image_data": "data:image/jpeg;base64,/..................................."
+}
+
+```
+
+
 # Understanding Face Detection and Recognition with `face-recognition` Package
 
 The `face-recognition` package is a powerful library used for precise face detection, recognition, and manipulation. Below is an overview of how this package functions:
@@ -70,3 +121,19 @@ The `face-recognition` package is a powerful library used for precise face detec
 - **Integration with Other Libraries**: It seamlessly integrates with OpenCV for image processing and can be combined with frameworks like TensorFlow or PyTorch for deeper customization and deployment.
 
 The `face-recognition` package encapsulates these functionalities, offering a user-friendly interface for face-related tasks. It's widely used in security systems, attendance tracking, access control, and more.
+
+## Under Development: Detection of Virtual Image or Real Webcam Image
+
+#### Progress Update
+
+Currently, the system is undergoing development to distinguish between virtual images and real webcam input for face detection.
+
+#### Approach and Development Status
+
+The development involves implementing algorithms and techniques to differentiate between images rendered by virtual sources (like virtual cameras) and live webcam streams.
+
+- **Status**: Currently in progress.
+- **Approach**: Experimenting with feature extraction, analyzing pixel patterns, and exploring metadata differences between virtual and real images.
+
+Stay tuned for further updates on the progress of this feature.
+
