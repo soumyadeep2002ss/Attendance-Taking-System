@@ -1,4 +1,6 @@
-# Backend for Face Detection and Student Attendance System
+
+# ![diagram-export-12-2-2023-11_54_14-PM](https://github.com/soumyadeep2002ss/Attendance-Taking-System/assets/64325089/f3f4d07e-8e26-480b-8890-9206bc75fb91)
+Backend for Face Detection and Student Attendance System
 
 This backend service, driven by FastAPI, is designed to enable real-time face detection and efficient management of student attendance records. Leveraging WebSocket for image data streaming, it provides endpoints for creating students and retrieving attendance data, making it an ideal solution for applications requiring facial recognition-based attendance tracking.
 
